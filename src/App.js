@@ -17,9 +17,9 @@ export default function App() {
   useEffect(() => {
     socket.on('message', ({ name, message, username }) => {
       setChat([...chat, { name, message, username }])
-      // console.log(message);
+      console.log(message);
     })
-  })
+  },[])
   
 
   const onTextChange = e => {
