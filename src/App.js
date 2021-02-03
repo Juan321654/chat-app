@@ -75,21 +75,18 @@ export default function App() {
       </div>
     ))
   }
-  // shows the user name 
-  const mappedUserData = airTableData.map(msg => {
-
-    return (
-      <div key={msg.id}>
-        <p>{msg.fields.username}</p>
-      </div>
-    )
-  })
+  // mapping through message from air table
+  const mappedUserData = airUserMessage.map(msg => (
+    <div key={msg.id}>
+      <p>{msg.fields.content}</p>
+    </div>
+  ))
 
 
 
   return (
     <div>
-      {mappedUserData}
+      {/* {mappedUserData} */}
       <div className="card">
       <form onSubmit={onMessageSubmit}>
         <h1>Make an user</h1>
@@ -117,7 +114,9 @@ export default function App() {
       onTextChange={onTextChange} 
       state={state} 
       renderChat={renderChat} 
-      onSubmit={onMessageSubmit}/>
+      onSubmit={onMessageSubmit}
+      mappedMessages={mappedUserData}
+      />
     </div>
   )
 }

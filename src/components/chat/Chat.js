@@ -8,6 +8,7 @@ function Chat(props) {
       <form onSubmit={props.onSubmit}>
       <div className="render-chat">
         <h1>Chat Log</h1>
+          {props.mappedMessages}
           {props.renderChat()}
         <div>
           <TextField
