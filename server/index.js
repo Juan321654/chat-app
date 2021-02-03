@@ -12,18 +12,18 @@ app.use(cors())
 io.on('connection', socket => {
   socket.on('message', ({ name, message, email, username, avatar }) => {
     io.emit('message', { name, message, email, username, avatar })
-  })
+  });
 
   // // Welcome current user
   // socket.emit('message', 'Welcome to the chatroom')
 
-  // // Broadcast when a user connects
-  // socket.broadcast.emit('message', 'A user has joined the chat');
+  // Broadcast when a user connects
+  socket.broadcast.emit('message', 'A user has joined the chat');
 
-  // // Runs when client Disconnects
-  // socket.on('disconnect', () => {
-  //   io.emit('message', 'A user has left the chat');
-  // });
+  // Runs when client Disconnects
+  socket.on('disconnect', () => {
+    io.emit('message', 'A user has left the chat');
+  });
 })
 
 http.listen(4000, function() {
